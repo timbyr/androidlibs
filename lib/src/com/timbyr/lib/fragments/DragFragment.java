@@ -2,6 +2,7 @@ package com.timbyr.lib.fragments;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.os.Build;
@@ -17,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+
 public class DragFragment extends SherlockFragment implements OnTouchListener {
 
 	private View selected_item = null;
@@ -29,6 +30,7 @@ public class DragFragment extends SherlockFragment implements OnTouchListener {
 	public final static int DRAG = 0;
 	public final static int DROP = 1;
 
+	@SuppressLint("NewApi")
 	public void setOnDragListener(View v, View root, final int flags, Object listener){
 		if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
 			//						ViewGroup container = (ViewGroup)getView();
@@ -75,7 +77,7 @@ public class DragFragment extends SherlockFragment implements OnTouchListener {
 		}
 	}
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	@SuppressLint("NewApi")
 	public void startDrag(View v){
 		ClipData dragData = ClipData.newPlainText((CharSequence)v.getTag(), (CharSequence)v.getTag());
 		DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
