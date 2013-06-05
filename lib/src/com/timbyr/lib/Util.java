@@ -54,6 +54,22 @@ public abstract class Util {
 		return size;
 	}
 
+	@SuppressWarnings("deprecation")
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
+	public static Point getSizePortraitWithoutStatusBar(Context context){
+		Point size = new Point();
+		WindowManager w = ((Activity)context).getWindowManager();
+
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2){
+			w.getDefaultDisplay().getSize(size);
+		}else{
+			Display d = w.getDefaultDisplay(); 
+			size.set(d.getWidth(), d.getHeight());
+		}
+		size.set(size.x, size.y);
+		return size;
+	}
+	
 	public static int getStatusBarHeight(Context context) {
 		int result = 0;
 		int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
