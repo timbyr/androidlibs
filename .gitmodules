@@ -1,0 +1,3 @@
+[submodule "countly-sdk-android"]
+	path = countly-sdk-android
+	url = git@github.com:Countly/countly-sdk-android.git
